@@ -68,6 +68,9 @@ describe('The Admin Page', function() {
             clip: { x: 0, y: 0, width: 100, height: 100 },
         });
      })
+    it('test admin snapshot 3', function () {
+        cy.visit('home?editmode=y')
+     })
 })
  
   
