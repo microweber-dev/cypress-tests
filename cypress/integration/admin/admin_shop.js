@@ -66,11 +66,22 @@ describe('The Admin Page 2', function() {
 		
 		cy.wait(1500).contains('Payment methods').click()    
 		cy.wait(1500).get('#mw-main-module-backend-shop-settings-shop-payments',{timeout:3000}).toMatchImageSnapshot({});
-		cy.wait(1500).contains('Payment methods').click()    
-
+		cy.wait(1500).contains('Payment methods').get('#available_providers').find('.mai-setting2').first().click({force:true});
+		cy.wait(1500).get('#paymentSettingsModal',{timeout:3000}).toMatchImageSnapshot({});
+		cy.wait(1500).get('.mw_modal_container').first().find('input[name=paypalexpress_username]').clear().type(`johnDoe@john.doe`)
+		cy.wait(1500).get('.mw_modal_container').first().find('input[name=paypalexpress_testmode]').first().click({force:true});
+        cy.wait(1500).get('.mw_modal_container').first().find('label.mw-switch').first().click({force:true});
+		cy.wait(1500).get('.mw_modal_container',{timeout:3000}).toMatchImageSnapshot({});
+        cy.wait(1500).get('.mw_modal_toolbar').first().find('.mw-modal-close').first().click({force:true});
+		
+		
 		cy.wait(1500).contains('General Shop Settings').click()    
 		cy.wait(1500).get('#general-shop-settings-accordion',{timeout:3000}).toMatchImageSnapshot({});
-		cy.wait(1500).contains('General Shop Settings').click()    
+		cy.wait(1500).get('#general-shop-settings-accordion',{timeout:3000}).find('select[name=currency]').select('EUR')
+        cy.wait(1500).get('#general-shop-settings-accordion',{timeout:3000}).find('select[name=currency_symbol_position]').select('before')
+        cy.wait(1500).get('#general-shop-settings-accordion',{timeout:3000}).find('select[name=currency_symbol_decimal]').select('when_needed')
+
+        cy.wait(1500).contains('General Shop Settings').click()    
 		
 		
 		
@@ -88,7 +99,7 @@ describe('The Admin Page 2', function() {
 		cy.wait(1500).contains('Send email to the client on new order').click()    
      
 	    
-        cy.wait(1500).contains('Other shop settings').click()		
+        cy.wait(1500).contains('Other shop settings').click()		  
 		cy.wait(1500).get('#mw_shop_set_other_settings').contains('Shop settings').click()
 		cy.wait(1500).get('#shop-settings-accordion',{timeout:3000}).toMatchImageSnapshot({});
 		cy.wait(1500).contains('Other shop settings').click()  
