@@ -2,10 +2,9 @@
   "scripts": {
     "cypress:open": "cypress open"
   },
-  "dependencies": {
-    "cypress-plugin-snapshots": "^1.2.6"
-  },
+  "dependencies": {},
   "devDependencies": {
-    "cypress": "^3.4.1"
+    "cypress": "^3.4.1",
+    "cypress-plugin-snapshots": "^1.2.6"
   }
 }
