@@ -3,6 +3,7 @@
   "viewportWidth": 1000,
   "viewportHeight": 660,
   "chromeWebSecurity": true,
+  "numTestsKeptInMemory": 1,
   "env": {
     "cypress-plugin-snapshots": {
       "autoCleanUp": false,
