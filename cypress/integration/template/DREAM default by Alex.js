@@ -39,7 +39,7 @@ describe('Dream', function () {
 
        //  cy.scrollTo(0, 500);
         cy.wait(1500);
-        cy.wait(1500).get('#module-layouts-5', {timeout: 5000}).toMatchImageSnapshot();
+        cy.wait(5000).get('#module-layouts-5', {timeout: 5000}).toMatchImageSnapshot();
         //cy.wait(1500).get('#blog-posts-5', {timeout: 5000}).toMatchImageSnapshot();
         //cy.wait(1500).get('#module-search-5', {timeout: 5000}).toMatchImageSnapshot();
         //cy.wait(1500).get('#module-categories-5', {timeout: 5000}).toMatchImageSnapshot();
@@ -63,7 +63,7 @@ describe('Dream', function () {
 
        //  cy.scrollTo(0, 500);
         cy.wait(1500);
-        cy.wait(1500).get('#module-shop-products-8', {timeout: 5000}).toMatchImageSnapshot();
+        cy.wait(5000).get('#module-shop-products-8', {timeout: 5000}).toMatchImageSnapshot();
        // cy.wait(1500).get('#module-shop-cart-15', {timeout: 5000}).toMatchImageSnapshot();
        // cy.wait(1500).contains('Charles Leather Bag').click()
        //
@@ -87,7 +87,7 @@ describe('Dream', function () {
 
        //  cy.scrollTo(0, 500);
         cy.wait(1500);
-        cy.wait(1500).get('#module-layouts-14', {timeout: 5000}).toMatchImageSnapshot();
+        cy.wait(5000).get('#module-layouts-14', {timeout: 5000}).toMatchImageSnapshot();
         //cy.wait(1500).get('#module-layouts-14--1', {timeout: 5000}).toMatchImageSnapshot();
         //cy.wait(1500).get('#module-layouts-14--2', {timeout: 5000}).toMatchImageSnapshot();
         //cy.wait(1500).get('#module-layouts-14--3', {timeout: 5000}).toMatchImageSnapshot();
@@ -101,7 +101,7 @@ describe('Dream', function () {
 
        //  cy.scrollTo(0, 500);
         cy.wait(1500);
-        cy.wait(1500).get('#module-layouts-15', {timeout: 5000}).toMatchImageSnapshot();
+        cy.wait(5000).get('#module-layouts-15', {timeout: 5000}).toMatchImageSnapshot();
 
 
        //  cy.scrollTo(500, 1500);
@@ -115,7 +115,7 @@ describe('Dream', function () {
 
        //  cy.scrollTo(0, 500);
         cy.wait(1500);
-        cy.wait(1500).get('#module-layouts-17', {timeout: 5000}).toMatchImageSnapshot();
+        cy.wait(5000).get('#module-layouts-17', {timeout: 5000}).toMatchImageSnapshot();
         //cy.wait(1500).get('#module-layouts-17--1', {timeout: 5000}).toMatchImageSnapshot();
         //cy.wait(1500).get('#module-layouts-17--2', {timeout: 5000}).toMatchImageSnapshot();
         //cy.wait(1500).get('#module-shop-cart-15', {timeout: 5000}).toMatchImageSnapshot();
