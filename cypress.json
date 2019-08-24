@@ -35,7 +35,7 @@
       "updateSnapshots": false
     },
     "username": "admin",
-    "password": "admin"
+    "password": "password"
   },
   "ignoreTestFiles": [
     "**/__snapshots__/*",
