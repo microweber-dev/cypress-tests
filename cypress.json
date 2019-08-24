@@ -34,8 +34,8 @@
       "serverPort": 2121,
       "updateSnapshots": false
     },
-    "username": "1",
-    "password": "1"
+    "username": "admin",
+    "password": "admin"
   },
   "ignoreTestFiles": [
     "**/__snapshots__/*",
