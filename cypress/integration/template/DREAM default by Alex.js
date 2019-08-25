@@ -95,27 +95,27 @@ describe('Dream', function () {
 
     })
 
-    it('successfully loads about', function () {
+    // it('successfully loads about', function () {
 
-        cy.visit('/about')
+    //     cy.visit('/about')
 
-        //  cy.scrollTo(0, 500);
-        cy.wait(1500);
-        // cy.wait(5000).get('#module-layouts-14', {timeout: 5000}).toMatchImageSnapshot();
-        cy.wait(1500).get('#module-layouts-14--1', {timeout: 5000}).toMatchImageSnapshot({
-            clip: {
-                x: 0,
-                y: 0,
-                width: 600,
-                height: 600
-            }
-        });
-        //cy.wait(1500).get('#module-layouts-14--2', {timeout: 5000}).toMatchImageSnapshot();
-        //cy.wait(1500).get('#module-layouts-14--3', {timeout: 5000}).toMatchImageSnapshot();
-        //cy.wait(1500).get('#module-layouts-14--4', {timeout: 5000}).toMatchImageSnapshot();
-        // cy.wait(1500).get('#module-shop-cart-15', {timeout: 5000}).toMatchImageSnapshot();
-        //  cy.scrollTo(2000, 2500);
-    })
+    //     //  cy.scrollTo(0, 500);
+    //     cy.wait(1500);
+    //     // cy.wait(5000).get('#module-layouts-14', {timeout: 5000}).toMatchImageSnapshot();
+    //     cy.wait(1500).get('#module-layouts-14--1', {timeout: 5000}).toMatchImageSnapshot({
+    //         clip: {
+    //             x: 0,
+    //             y: 0,
+    //             width: 600,
+    //             height: 600
+    //         }
+    //     });
+    //     //cy.wait(1500).get('#module-layouts-14--2', {timeout: 5000}).toMatchImageSnapshot();
+    //     //cy.wait(1500).get('#module-layouts-14--3', {timeout: 5000}).toMatchImageSnapshot();
+    //     //cy.wait(1500).get('#module-layouts-14--4', {timeout: 5000}).toMatchImageSnapshot();
+    //     // cy.wait(1500).get('#module-shop-cart-15', {timeout: 5000}).toMatchImageSnapshot();
+    //     //  cy.scrollTo(2000, 2500);
+    // })
     it('successfully loads portfolio', function () {
 
         cy.visit('/portfolio')
