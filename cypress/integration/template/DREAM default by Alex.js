@@ -95,6 +95,74 @@ describe('Dream', function () {
 
     })
 
+
+    it('successfully loads sho2p', function () {
+
+
+        cy.visit('/shop')
+
+
+        //  cy.scrollTo(0, 500);
+        cy.wait(1500);
+        cy.wait(5000).get('#module-shop-products-8', {timeout: 5000}).toMatchImageSnapshot({
+            clip: {
+                x: 0,
+                y: 0,
+                width: 600,
+                height: 600
+            }
+        });
+        // cy.wait(1500).get('#module-shop-cart-15', {timeout: 5000}).toMatchImageSnapshot();
+        // cy.wait(1500).contains('Charles Leather Bag').click()
+        //
+        // cy.wait(1500).get('#price_31price').contains('Add to cart').click()
+        //
+        // cy.wait(1500).get('Checkout Now').contains('Checkout Now').click()
+        //
+        // cy.visit('/services')
+        //
+        ////  cy.scrollTo(0, 500);
+        // cy.wait(1500);
+        // cy.wait(1500).get('#module-layouts-12--1', {timeout: 5000}).toMatchImageSnapshot();
+        // cy.wait(1500).get('#module-layouts-12--2-btn', {timeout: 5000}).toMatchImageSnapshot();
+        //cy.wait(1500).get('#module-shop-cart-15', {timeout: 5000}).toMatchImageSnapshot();
+
+    })
+
+
+    it('successfully loads s4hop', function () {
+
+
+        cy.visit('/shop')
+
+
+        //  cy.scrollTo(0, 500);
+        cy.wait(1500);
+        cy.wait(5000).get('#module-shop-products-8', {timeout: 5000}).toMatchImageSnapshot({
+            clip: {
+                x: 0,
+                y: 0,
+                width: 600,
+                height: 600
+            }
+        });
+        // cy.wait(1500).get('#module-shop-cart-15', {timeout: 5000}).toMatchImageSnapshot();
+        // cy.wait(1500).contains('Charles Leather Bag').click()
+        //
+        // cy.wait(1500).get('#price_31price').contains('Add to cart').click()
+        //
+        // cy.wait(1500).get('Checkout Now').contains('Checkout Now').click()
+        //
+        // cy.visit('/services')
+        //
+        ////  cy.scrollTo(0, 500);
+        // cy.wait(1500);
+        // cy.wait(1500).get('#module-layouts-12--1', {timeout: 5000}).toMatchImageSnapshot();
+        // cy.wait(1500).get('#module-layouts-12--2-btn', {timeout: 5000}).toMatchImageSnapshot();
+        //cy.wait(1500).get('#module-shop-cart-15', {timeout: 5000}).toMatchImageSnapshot();
+
+    })        
+
     // it('successfully loads about', function () {
 
     //     cy.visit('/about')
