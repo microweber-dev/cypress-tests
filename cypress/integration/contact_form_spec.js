@@ -4,7 +4,7 @@ describe('The Contact Page', function() {
 	it('successfully loads', function() {
 		
 		cy.clearCookies()
-		cy.visit('/contact')
+		cy.visit('/contacts')
 
 		var Name = 'Bozhidar Slaveykov'
 		var Email = 'bobi@microweber.com'
