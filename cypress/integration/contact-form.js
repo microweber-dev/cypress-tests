@@ -69,7 +69,6 @@ describe('The Contact Page', function() {
 				expect(response.body.custom_fields).to.have.property('Email', Email)
 				expect(response.body.custom_fields).to.have.property('Message', Message)
 				
-				
 			  })
 		}
 	
