@@ -1,5 +1,5 @@
 {
-  "baseUrl": "http://localhost/",
+  "baseUrl": "http://localhost/mw1/",
   "viewportWidth": 1000,
   "viewportHeight": 660,
   "chromeWebSecurity": false,
@@ -34,8 +34,8 @@
       "serverPort": 2121,
       "updateSnapshots": false
     },
-    "username": "admin",
-    "password": "password"
+    "username": "1",
+    "password": "1"
   },
   "ignoreTestFiles": [
     "**/__snapshots__/*",
