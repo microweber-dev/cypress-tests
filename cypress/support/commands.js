@@ -24,9 +24,21 @@
 // -- This is will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
 
+Cypress.Commands.add("dragTo", { prevSubject: "element" }, (subject, targetEl) => {
+    cy.wrap(subject)
+   // .trigger('mousedown', {  which: 1, force: true,bubbles:false })
+		.trigger("dragstart");
+
+
+	  cy.get(targetEl)
+		//.trigger('mouseup', {  which: 1, force: true,bubbles:false })
+		.trigger("drop");
+  }
+);
+
 
 Cypress.Commands.add('login', (userType, options = {}) => {
-	
+
 	cy.clearCookies()
 	cy.visit('/admin')
 
@@ -48,31 +60,31 @@ Cypress.Commands.add('login', (userType, options = {}) => {
 	cy.get('#mw-admin-main-menu li').its('length').should('be.gt', 3)
 
 	cy.getCookie('laravel_session', {timeout: 3000}).should('exist')
-	
+
 });
 
 
 Cypress.Commands.add('moduleContactFormDisableCaptcha', () => {
-	
-	cy.wait(1500)  
-	
+
+	cy.wait(1500)
+
 	cy.get('.mw-admin-go-live-now-btn').invoke('removeAttr', 'target').click();
-	
-	cy.visit('/contacts') 
-	
-	cy.get('div[data-type=contact_form]').scrollIntoView({ duration: 1000 , offset: {top: -400}}) 
+
+	cy.visit('/contacts')
+
+	cy.get('div[data-type=contact_form]').scrollIntoView({ duration: 1000 , offset: {top: -400}})
 
 	// cy.get('div[data-type=contact_form]').find('h4').scrollIntoView({ duration: 1000 , offset: {top: -300}}).click()
-	
+
 	cy.window().then((win) => {
-	
-		
+
+
 	cy.get('div[data-type=contact_form]')
      .should('have.attr', 'id')
-     .then((id) => { 
-		
+     .then((id) => {
+
 		var modal_contact_form = win.mw.tools.open_global_module_settings_modal('contact_form/admin', id)
-		
+
 		 cy.wait(1500)
 		 .get('.mw-dialog-container')
 		 .find('iframe').first().iframe()
@@ -80,9 +92,9 @@ Cypress.Commands.add('moduleContactFormDisableCaptcha', () => {
 			modal_contact_form.remove()
 			// cy.visit('/contacts')
 		 });
-		
+
      })
-	
+
 
 	});
 });
