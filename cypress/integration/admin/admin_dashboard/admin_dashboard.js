@@ -56,10 +56,10 @@ describe('The Admin Page', function () {
     })
 
 
-    it('test admin snapshot 4', function () {
-        cy.wait(1500).get('#order-n-4', {timeout: 3000}).toMatchImageSnapshot({});
-
-    })
+    // it('test admin snapshot 4', function () {
+    //     cy.wait(1500).get('#order-n-4', {timeout: 3000}).toMatchImageSnapshot({});
+    //
+    // })
 
 })
  
