@@ -24,6 +24,10 @@
 // -- This is will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
 
+import "cypress-localstorage-commands";
+
+
+
 Cypress.Commands.add("dragTo", { prevSubject: "element" }, (subject, targetEl) => {
     cy.wrap(subject)
    // .trigger('mousedown', {  which: 1, force: true,bubbles:false })
@@ -39,28 +43,34 @@ Cypress.Commands.add("dragTo", { prevSubject: "element" }, (subject, targetEl) =
 
 Cypress.Commands.add('login', (userType, options = {}) => {
 
-	cy.clearCookies()
-	cy.visit('/admin')
+    if(!cy.getCookie('back_to_admin')){
+	//cy.clearCookies()
 
 	const username = Cypress.env('username')
 	const password = Cypress.env('password')
 
 
-	cy.get('#lang_selector li').its('length').should('be.gt', 2)
-	cy.get('#login_foot a').its('length').should('be.gt', 1)
 
-	cy.get('input[name=username]').type(username)
 
-	// {enter} causes the form to submit
-	cy.get('input[name=password]').type(`${password}{enter}`)
+    cy.request({
+        method: 'POST',
+        url: "/api/user_login",
+        body: {
 
-	// we should be redirected to /dashboard
-	cy.url().should('include', '/admin')
+                username: username,
+                password: password,
 
-	cy.get('#mw-admin-main-menu li').its('length').should('be.gt', 3)
+        }
+    })
+        .its('body')
+        .then((body) => {
+            // cy.setLocalStorage("accessToken", body.accessToken);
+            // cy.setLocalStorage("refreshToken", body.refreshToken);
+        });
+
 
 	cy.getCookie('laravel_session', {timeout: 3000}).should('exist')
-
+    }
 });
 
 
