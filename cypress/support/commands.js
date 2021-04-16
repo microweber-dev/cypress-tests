@@ -183,3 +183,35 @@ function onIframeReady($iframe, successFn, errorFn) {
     errorFn();
   }
 }
+
+
+
+//
+// function contentTestGetLinksToVisitFromSitemap() {
+//
+//   var fruits = ["Banana", "Orange", "Apple", "Mango"];
+//
+//
+//
+//   var sitemapFile = Cypress.config().baseUrl + 'sitemap.xml/pages';
+//
+//   Cypress.$.ajax({
+//       type: "GET",
+//       async: false,
+//       url: sitemapFile,
+//       dataType: "xml",
+//       success: function(xml) {
+//           Cypress.$(xml).find('url').each(function(){
+//               var tipo = Cypress.$(this).find('loc').html();
+//               if(tipo){
+//
+//                 if(!fruits.includes(tipo)){
+//                 console.log(tipo);
+//                 }
+//               }
+//
+//           });
+//       }
+//   });
+//
+// }
