@@ -25,6 +25,9 @@
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
 
 import "cypress-localstorage-commands";
+import 'cypress-wait-until';
+import 'cypress-iframe';
+
 
 
 
@@ -241,7 +244,77 @@ Cypress.Commands.add('mwTestCheckForMessedTagsInHtmlBody', () => {
 
     cy.get('body').should('have.length', 1)
     cy.get('tag').should('have.length', 0)
-
     cy.contains('mw_replace').should('have.length', 0)
+
+
+    cy.get('.module').then((module) => {
+    cy.get('.module').should('have.attr', 'data-type')
+    cy.get('.module').should('have.attr', 'id')
+
+    })
+
+    cy.get('.edit').then((module) => {
+    cy.get('.edit').should('have.attr', 'field')
+    cy.get('.edit').should('have.attr', 'rel')
+    })
+
+})
+
+
+
+Cypress.Commands.add('mwLoginToAdminPanelNotLogged', () => {
+
+
+
+  cy.visit('/admin')
+
+
+  cy.get('body')
+      .then(($body) => {
+          // synchronously query from body
+          // to find which element was created
+          if ($body.find('input[name=username]').length) {
+
+
+              cy.clearCookies()
+
+              const username = Cypress.env('username')
+              const password = Cypress.env('password')
+
+
+              cy.get('input[name=username]').type(username)
+
+              // {enter} causes the form to submit
+              cy.get('input[name=password]').type(`${password}{enter}`)
+
+              // we should be redirected to /dashboard
+              cy.url().should('include', '/admin')
+
+
+              cy.getCookie('laravel_session', {timeout: 3000}).should('exist')
+
+
+              cy.get('.module-site-stats-admin', {timeout: 5000}).should('exist')
+              //  cy.get('.mw-logout-link', {timeout: 5000}).should('exist')
+              cy.get('#mw-admin-main-navigation', {timeout: 5000}).should('exist')
+
+
+              cy.wait(1000)
+
+
+
+
+
+          }
+
+
+      })
+      .then((selector) => {
+
+      })
+
+
+
+
 
 })

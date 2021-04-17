@@ -8,6 +8,12 @@ describe('Browsing Pages', function () {
         });
 
 
+
+        cy.intercept('POST','**/pingstats*', {
+          statusCode: 200,
+          body: 'it worked!',
+        })
+
       //  cy.intercept('POST', '*/*').as('showAll')
         // from https://glebbahmutov.com/cypress-examples/6.6.0/commands/network-requests.html#cy-intercept
         let duration
@@ -48,7 +54,6 @@ describe('Browsing Pages', function () {
                       cy.visit(m)
                        cy.wait(1000);
                         cy.mwTestCheckForMessedTagsInHtmlBody();
-                        cy.wait(300);
 
 
 
