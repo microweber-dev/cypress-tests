@@ -185,33 +185,63 @@ function onIframeReady($iframe, successFn, errorFn) {
 }
 
 
+Cypress.Commands.add('getSessionStorage', (key) => {
+  cy.window().then((window) => window.sessionStorage.getItem(key))
+})
 
-//
-// function contentTestGetLinksToVisitFromSitemap() {
-//
-//   var fruits = ["Banana", "Orange", "Apple", "Mango"];
-//
-//
-//
-//   var sitemapFile = Cypress.config().baseUrl + 'sitemap.xml/pages';
-//
-//   Cypress.$.ajax({
-//       type: "GET",
-//       async: false,
-//       url: sitemapFile,
-//       dataType: "xml",
-//       success: function(xml) {
-//           Cypress.$(xml).find('url').each(function(){
-//               var tipo = Cypress.$(this).find('loc').html();
-//               if(tipo){
-//
-//                 if(!fruits.includes(tipo)){
-//                 console.log(tipo);
-//                 }
-//               }
-//
-//           });
-//       }
-//   });
-//
-// }
+Cypress.Commands.add('setSessionStorage', (key, value) => {
+  cy.window().then((window) => {
+    window.sessionStorage.setItem(key, value)
+  })
+})
+
+
+
+Cypress.Commands.add('contentTestGetLinksToVisitFromSitemap', () => {
+
+
+  var links_to_visit = [];
+
+
+  var sitemapFiles = [ 'sitemap.xml/pages', 'sitemap.xml/posts', 'sitemap.xml/products', 'sitemap.xml/categories'];
+
+   //var sitemapFile = Cypress.config().baseUrl + 'sitemap.xml/pages';
+  sitemapFiles.forEach(function(m) {
+    var sitemapFile = Cypress.config().baseUrl + m;
+           Cypress.$.ajax({
+               type: "GET",
+               async: false,
+               url: sitemapFile,
+               dataType: "xml",
+               success: function(xml) {
+                   Cypress.$(xml).find('url').each(function(){
+                       var tipo = Cypress.$(this).find('loc').html();
+                         links_to_visit.push(tipo);
+
+                   });
+               }
+           });
+    })
+
+
+return links_to_visit;
+
+})
+
+
+
+
+
+
+
+Cypress.Commands.add('mwTestCheckForMessedTagsInHtmlBody', () => {
+
+
+
+
+    cy.get('body').should('have.length', 1)
+    cy.get('tag').should('have.length', 0)
+
+    cy.contains('mw_replace').should('have.length', 0)
+
+})

@@ -1,4 +1,4 @@
-describe('The Admin Page', function () {
+describe('Browsing Pages', function () {
 
 
 
@@ -39,31 +39,31 @@ describe('The Admin Page', function () {
         var links_to_visit = [];
 
 
-        var sitemapFiles = [ 'sitemap.xml/pages', 'sitemap.xml/posts', 'sitemap.xml/products', 'sitemap.xml/categories'];
-
-         //var sitemapFile = Cypress.config().baseUrl + 'sitemap.xml/pages';
-        sitemapFiles.forEach(function(m) {
-          var sitemapFile = Cypress.config().baseUrl + m;
-                 Cypress.$.ajax({
-                     type: "GET",
-                     async: false,
-                     url: sitemapFile,
-                     dataType: "xml",
-                     success: function(xml) {
-                         Cypress.$(xml).find('url').each(function(){
-                             var tipo = Cypress.$(this).find('loc').html();
-                               links_to_visit.push(tipo);
-
-                         });
-                     }
-                 });
-          })
+        cy.contentTestGetLinksToVisitFromSitemap().then(links_to_visit => {
 
 
-       links_to_visit.forEach(function(m) {
-            cy.visit(m)
-             cy.wait(1000);
-      })
+
+
+                 links_to_visit.forEach(function(m) {
+                      cy.visit(m)
+                       cy.wait(1000);
+                        cy.mwTestCheckForMessedTagsInHtmlBody();
+                        cy.wait(300);
+
+
+
+                })
+
+
+            })
+
+
+
+
+
+    //  links_to_visit =     cy.contentTestGetLinksToVisitFromSitemap()
+
+
     })
 
     // it('Visiting modules ', function () {
