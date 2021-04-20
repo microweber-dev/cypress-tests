@@ -6,39 +6,40 @@ describe('Browsing Pages In Live Edit', function () {
             preserve: ["back_to_admin", "laravel_session"]
         });
 
+        cy.mwBeforeEach();
 
-        cy.intercept('POST', '**/pingstats*', {
-            statusCode: 200,
-            body: 'it worked!',
-        })
-        cy.intercept('get', '**/csrf*', {
-            statusCode: 200,
-            body: '',
-        })
-
-        //  cy.intercept('POST', '*/*').as('showAll')
-        // from https://glebbahmutov.com/cypress-examples/6.6.0/commands/network-requests.html#cy-intercept
-        let duration
-        cy.intercept('POST', '**/*', (req) => {
-            if (req === null) {
-                return;
-            }
-
-            const started = +new Date()
-            req.reply(() => {
-                // we are not interested in modifying the response
-                // just measuring the elapsed duration
-                duration = +new Date() - started
-            })
-        }).as('showAll')
-
-
-        if (duration) {
-            cy.wait('@showAll').should('include.keys', [
-
-                'response',
-            ])
-        }
+        // cy.intercept('POST', '**/pingstats*', {
+        //     statusCode: 200,
+        //     body: 'it worked!',
+        // })
+        // cy.intercept('get', '**/csrf*', {
+        //     statusCode: 200,
+        //     body: '',
+        // })
+        //
+        // //  cy.intercept('POST', '*/*').as('showAll')
+        // // from https://glebbahmutov.com/cypress-examples/6.6.0/commands/network-requests.html#cy-intercept
+        // let duration
+        // cy.intercept('POST', '**/*', (req) => {
+        //     if (req === null) {
+        //         return;
+        //     }
+        //
+        //     const started = +new Date()
+        //     req.reply(() => {
+        //         // we are not interested in modifying the response
+        //         // just measuring the elapsed duration
+        //         duration = +new Date() - started
+        //     })
+        // }).as('showAll')
+        //
+        //
+        // if (duration) {
+        //     cy.wait('@showAll').should('include.keys', [
+        //
+        //         'response',
+        //     ])
+        // }
 
     })
 

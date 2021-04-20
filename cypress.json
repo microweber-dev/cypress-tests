@@ -1,9 +1,14 @@
 {
-  "baseUrl": "http://127.0.0.24/microweber-dev/",
+  "baseUrl": "http://127.0.0.17/microweber-dev/",
+  "baseUrlxxx": "http://unit.microweber.com/",
+  "baseUrlx": "http://127.0.0.24/microweber-dev/",
+  "baseUrlxx": "http://127.0.0.6/aaaa/webinstall-master/webinstall-master/",
   "viewportWidth": 1000,
   "viewportHeight": 660,
   "chromeWebSecurity": false,
   "numTestsKeptInMemory": 1,
+  "blockHosts": ["*.google-analytics.com", "*.plausible.io", "*.facebook.com", "*.gvt2.com"],
+
   "env": {
     "cypress-plugin-snapshots": {
       "autoCleanUp": false,

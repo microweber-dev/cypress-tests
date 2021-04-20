@@ -17,6 +17,7 @@
 import './commands'
 
 import 'cypress-plugin-snapshots/commands';
+//import '@cypress/code-coverage/support'
 
 
 // cypress/support/index.js
