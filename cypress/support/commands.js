@@ -283,10 +283,10 @@ Cypress.Commands.add('mwLoginToAdminPanelNotLogged', () => {
               const password = Cypress.env('password')
 
 
-              cy.get('input[name=username]').clear().invoke('val', username).type(username)
+              cy.get('input[name=username]').clear().invoke('val', username)
 
               // {enter} causes the form to submit
-              cy.get('input[name=password]').clear().invoke('val', username).type(`${password}{enter}`)
+              cy.get('input[name=password]').clear().invoke('val', username).type(`{enter}`)
 
               // we should be redirected to /dashboard
               cy.url().should('include', '/admin')
