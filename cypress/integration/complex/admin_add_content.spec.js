@@ -23,8 +23,8 @@ describe('Browsing Pages In Live Edit', function () {
         cy.mwLoginToAdminPanelNotLogged();
 
         cy.visit('/admin/view:content')
-        cy.get('#pages_edit_container', {timeout: 5000}).should('exist')
-        cy.wait(1000);;
+        cy.get('#pages_edit_container', {timeout: 15000}).should('exist')
+        cy.wait(5000);;
 
         cy.waitUntil(() => cy.get('#pages_edit_container').get('.col-md-7').find('a.btn-outline-success').first().click());
 
@@ -77,7 +77,26 @@ describe('Browsing Pages In Live Edit', function () {
         cy.waitUntil(() => cy.get('#mw-admin-content-edit-inner-delete-curent-content-btn').click());
         cy.wait(100);
         cy.waitUntil(() => cy.get('#mw-dialog-holder-mw_confirm_modal').find('.mw-dialog-footer').find('.mw-ui-btn-info').click());
-//mw-admin-cotnent-edit-inner-delete-curent-content-btn
+
+
+        cy.visit('/admin/view:content/action:pages#action=trash')
+
+        cy.waitUntil(() => cy.get('.item-title').get('h5').find('a').contains(randomName ).parents('.card-body').first().find('.btn-outline-danger').first().click());
+        cy.waitUntil(() => cy.get('#mw-dialog-holder-mw_confirm_modal').find('.mw-dialog-footer').find('.mw-ui-btn-info').click());
+
+
+        cy.waitUntil(() => cy.get('.item-title').get('h5').find('a').contains(randomName ) .should('have.length', 0));
+
+        cy.waitUntil(() => cy.visit('/admin/view:content'));
+
+
+
+
+        cy.wait(1000);
+        cy.waitUntil(() => cy.get('.js-search-by-keywords').get('input.js-search-by-keywords-input').type(randomName));
+        cy.waitUntil(() => cy.get('.js-search-by-keywords').get('input.js-search-by-keywords-input').type('{enter}'));
+        cy.wait(1000);
+        cy.waitUntil(() => cy.get('.no-items-box').should('have.length', 1));
 
 
     })

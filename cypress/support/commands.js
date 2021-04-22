@@ -283,10 +283,10 @@ Cypress.Commands.add('mwLoginToAdminPanelNotLogged', () => {
               const password = Cypress.env('password')
 
 
-              cy.get('input[name=username]').type(username)
+              cy.get('input[name=username]').invoke('val', '').type(username)
 
               // {enter} causes the form to submit
-              cy.get('input[name=password]').type(`${password}{enter}`)
+              cy.get('input[name=password]').invoke('val', '').type(`${password}{enter}`)
 
               // we should be redirected to /dashboard
               cy.url().should('include', '/admin')
@@ -295,9 +295,9 @@ Cypress.Commands.add('mwLoginToAdminPanelNotLogged', () => {
               cy.getCookie('laravel_session', {timeout: 3000}).should('exist')
 
 
-              cy.get('.module-site-stats-admin', {timeout: 5000}).should('exist')
+              cy.get('.module-site-stats-admin', {timeout: 15000}).should('exist')
               //  cy.get('.mw-logout-link', {timeout: 5000}).should('exist')
-              cy.get('#mw-admin-main-navigation', {timeout: 5000}).should('exist')
+              cy.get('#mw-admin-main-navigation', {timeout: 15000}).should('exist')
 
 
               cy.wait(1000)
@@ -347,7 +347,21 @@ Cypress.Commands.add('mwBeforeEach', () => {
             duration = +new Date() - started
         })
     }).as('showAll')
-    cy.intercept('POST', '**/module/*', (req) => {
+    cy.intercept('POST', '*/module/*', (req) => {
+        if (req === null) {
+            return;
+        }
+
+        const started = +new Date()
+        req.reply(() => {
+            // we are not interested in modifying the response
+            // just measuring the elapsed duration
+            duration = +new Date() - started
+        })
+    }).as('showAll')
+
+
+    cy.intercept('GET', '*/api/*', (req) => {
         if (req === null) {
             return;
         }
