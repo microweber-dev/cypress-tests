@@ -26,7 +26,7 @@ describe('Browsing Pages In Live Edit', function () {
         cy.get('#pages_edit_container', {timeout: 15000}).should('exist')
         cy.wait(5000);;
 
-        cy.waitUntil(() => cy.get('#pages_edit_container').get('.col-md-7').find('a.btn-outline-success').first().click());
+        cy.waitUntil(() => cy.get('#pages_edit_container').find('a.btn-outline-success').first().click());
 
         cy.frameLoaded('.preview_frame_small')
         cy.wait(3000);;
@@ -37,7 +37,7 @@ describe('Browsing Pages In Live Edit', function () {
         cy.waitUntil(() => cy.get('input[name=title]').type(randomName));
         cy.waitUntil(() => cy.scrollTo('top'));
 
-        cy.waitUntil(() => cy.get('#pages-edit-container-menu').find('.custom-checkbox').first().click());
+        cy.waitUntil(() => cy.get('.module-menu').find('.custom-checkbox').first().click());
         cy.waitUntil(() => cy.get('#is_active_0').parent().first().click());
         cy.waitUntil(() => cy.get('#content-title-field-buttons').find('#js-admin-save-content-main-btn').click());
 
@@ -60,7 +60,7 @@ describe('Browsing Pages In Live Edit', function () {
 
         cy.waitUntil(() => cy.get('.manage-post-item-title').invoke("text").should("eq", randomName));
 
-        cy.waitUntil(() => cy.get('.manage-post-item-title').contains(randomName ).parents('.card-body').first().find('.mw-js-edit-content-admin-list-link').first().click());
+        cy.waitUntil(() => cy.get('.manage-post-item-title').contains(randomName ).parents('.card-body').first().find('.btn-outline-success').first().click());
         cy.wait(5000);
 
 

@@ -41,12 +41,10 @@ describe('Admin edit settings', function () {
 
 
 
-        cy.visit('/admin/view:content/action:settings').then(async (contentWindow) => {
+        cy.visit('/admin/view:settings#option_group=users').then(async (contentWindow) => {
 
 
-            await cy.get('.select-settings', {timeout: 15000}).should('exist')
 
-            await cy.waitUntil(() => cy.get('a[href="#option_group=users"]').click());
 
             await cy.wait(1000);
             await cy.waitUntil(() => cy.get('i.mdi-login').should('exist'));
@@ -70,7 +68,6 @@ describe('Admin edit settings', function () {
             await cy.waitUntil(() => cy.get('i.mdi-login').should('exist'));
 
 
-            console.log('Tykaaaa ');
 
 
             // await cy.waitUntil(() => cy.get('input[type="checkbox"]'));
@@ -180,8 +177,11 @@ describe('Admin edit settings', function () {
 
 
             cy.get('.select-settings', {timeout: 15000}).should('exist')
+            cy.wait(1000);
+             cy.waitUntil(() => cy.get('a').contains('Login & Register').click());
 
-            cy.waitUntil(() => cy.get('a[href="#option_group=users"]').click());
+
+
 
             cy.wait(1000);
             cy.waitUntil(() => cy.get('i.mdi-login').should('exist'));

@@ -26,8 +26,8 @@ describe('Admin edit settings', function () {
         cy.visit('/admin/view:content/action:settings')
         cy.get('.select-settings', {timeout: 15000}).should('exist')
 
-        cy.waitUntil(() => cy.get('a[href="#option_group=website"]').click());
-
+        cy.waitUntil(() => cy.get('a.js-website-settings-link').first().click());
+        cy.wait(1000);;
 
         cy.waitUntil(() => cy.get('.module-settings-group-website').find('input[name=website_title]').clear().type(randomText1).type('{enter}'));
         cy.waitUntil(() => cy.get('.module-settings-group-website').find('textarea[name=website_description]').clear().type(randomText2).blur());
@@ -41,7 +41,7 @@ describe('Admin edit settings', function () {
         cy.visit('/admin/view:content')
         cy.wait(1000);;
         cy.visit('/admin/view:content/action:settings')
-        cy.waitUntil(() => cy.get('a[href="#option_group=website"]').click());
+        cy.waitUntil(() => cy.get('a.js-website-settings-link').first().click());
         cy.wait(1000);;
 
 
